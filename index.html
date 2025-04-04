@@ -31,7 +31,8 @@
         }
       })
       .then(res => res.text())
-      .then(res => alert('제출 완료: ' + res));
+      .then(res => alert('제출 완료: ' + res))
+      .catch(err => alert('에러 발생: ' + err));
     });
   </script>
 </body>
