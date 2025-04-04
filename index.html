@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>폼 입력</title>
+</head>
+<body>
+  <form id="myForm">
+    <input name="name" placeholder="이름"><br>
+    <input name="email" type="email" placeholder="이메일"><br>
+    <textarea name="message" placeholder="메시지"></textarea><br>
+    <button type="submit">제출</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+
+      fetch('https://script.google.com/macros/s/AKfycbzDXU3FApR6ob_LsiKZhHLZ-7iG1ImzNqeyFLlX6_kmKwRp1t0gmP6vOXML7ldO0n34/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.text())
+      .then(res => alert('제출 완료: ' + res));
+    });
+  </script>
+</body>
+</html>
